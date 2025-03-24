@@ -41,11 +41,13 @@ jobs:
           with:
             name: Mocha-Test-Result
             path: test-results.xml1
-docker:
-     runs-on: ubuntu-latest
-     needs:
-     - code-coverage
-     - unit-testing
+     docker:
+       permissions:      #added
+       packages: write  #added
+       runs-on: ubuntu-latest
+       needs:
+       - code-coverage
+       - unit-testing
      steps:
      - uses: actions/checkout@v4
      - uses: docker/login-action@v3
